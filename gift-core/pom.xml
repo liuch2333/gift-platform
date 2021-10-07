@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.gift.parent</groupId>
+        <artifactId>gift-parent-dependencies</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <groupId>com.gift.core</groupId>
+    <artifactId>gift-core</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <gateway.version>1.0.0-SNAPSHOT</gateway.version>
+    </properties>
+    <modules>
+        <module>gift-gateway</module>
+    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>com.gift.core</groupId>
+            <artifactId>gift-gateway</artifactId>
+            <version>${gateway.version}</version>
+        </dependency>
+    </dependencies>
+
+</project>

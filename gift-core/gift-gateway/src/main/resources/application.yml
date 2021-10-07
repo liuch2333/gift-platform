@@ -1,0 +1,24 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: gift-gateway
+    name-text: 网关
+    version: 1.0.0.SNAPSHOT
+  cloud:
+    nacos:
+      config:
+        enabled: true
+        server-addr: http://127.0.0.1:8848
+        file-extension: yml
+    gateway:
+      discovery:
+        locator:
+          enabled: true # 开启从注册中心动态创建路由的功能，利用微服务名称进行路由
+      routes: # lb 使用负载均衡策略
+        - id: gift-apply-demo
+          uri: lb://gift-apply-demo
+          predicates: # 配置该路由的断言，通过PredicateDefinition类进行接收配置。
+            - Path=/apply/**
+
+

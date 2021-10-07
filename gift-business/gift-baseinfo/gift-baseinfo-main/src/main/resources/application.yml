@@ -1,0 +1,50 @@
+server:
+  port: 9012
+spring:
+  cloud:
+    nacos:
+      config:
+        enabled: true
+        server-addr: http://127.0.0.1:8848
+        file-extension: yml
+  application:
+    name: gift-apply-demo
+    name-text: 报装工程demo
+    version: 1.0.0.SNAPSHOT
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://192.168.100.132:3306/bpm?useSSL=false&characterEncoding=utf-8
+    username: root
+#    password: 123456
+    password: h7eX+pV846SjxiJaxM96TmpKRfl0Hd7LR1spp94pV7TzZ/YD6Hw3M05No9np4mwQqulojusaDcgC1ezdLYPFnA==
+    druid:
+      initial-size: 2
+      min-idle: 5
+      max-active: 20
+      max-wait: 30000
+      #配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      time-between-eviction-runs-millis: 2000
+      #配置一个连接在池中最小生存的时间，单位是毫秒
+      min-evictable-idle-time-millis: 600000
+      validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      # 配置扩展插件 监控和防御 SQL 注入攻击
+      filters: stat,wall
+      # oracle为true,mysql建议false   #PSCache 相关
+      pool-prepared-statements: false
+      # oracle可设置100,mysql建议-1 #PSCache 相关
+      max-pool-prepared-statement-per-connection-size: -1
+      use-global-data-source-stat: true
+      # 数据库加密连接使用
+      filter:
+        config:
+          enabled: true
+      connection-properties: config.decrypt=true;config.decrypt.key=MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAL6e9tkKgprZOCd2dTBEDr27I2u0ZeWJ4mmypH9S4hN/UwkeGqo6s2Y2v9ZuFPB3u1lZINmN1Za61W858Fr5/BMCAwEAAQ==
+
+      stat-view-servlet:
+        enabled: true
+        login-username: admin
+        login-password: admin

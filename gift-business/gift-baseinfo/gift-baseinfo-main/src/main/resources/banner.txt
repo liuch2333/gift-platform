@@ -1,0 +1,12 @@
+ ███      █                  █
+   █                         █
+   █                         █
+   █    ███    █   █   ▓██▒  █▒██▒
+   █      █    █   █  ▓█  ▓  █▓ ▒█
+   █      █    █   █  █░     █   █
+   █      █    █   █  █      █   █
+   █      █    █   █  █░     █   █
+   █░     █    █▒ ▓█  ▓█  ▓  █   █
+   ▒██  █████  ▒██▒█   ▓██▒  █   █
+
+${AnsiColor.BRIGHT_RED}: ${spring.application.nameText} :: (v${spring.application.version})
