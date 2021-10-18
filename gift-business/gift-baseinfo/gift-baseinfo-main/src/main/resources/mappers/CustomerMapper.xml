@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gift.baseinfo.main.mapper.CustomerMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.gift.baseinfo.main.entity.Customer">
+        <id column="id" property="id" />
+        <result column="cust_name" property="custName" />
+        <result column="cust_tel" property="custTel" />
+        <result column="cust_sex" property="custSex" />
+        <result column="cust_age" property="custAge" />
+        <result column="cust_source" property="custSource" />
+        <result column="remark" property="remark" />
+        <result column="createtime" property="createtime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, cust_name, cust_tel, cust_sex, cust_age, cust_source, remark, createtime
+    </sql>
+
+</mapper>
