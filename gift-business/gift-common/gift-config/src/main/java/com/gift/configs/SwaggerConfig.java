@@ -1,5 +1,6 @@
 package com.gift.configs;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -16,7 +17,30 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig {
 
+    @Value("${spring.application.version}")
+    private String version;
+
+    @Value("${spring.application.nameText}")
+    private String nameText;
+
     @Bean
+    public Docket createRestApi(){
+        return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo())
+                .select()
+                .apis(RequestHandlerSelectors.any())
+//                .paths(Predicates.not(PathSelectors.regex("/error")))
+                .paths(PathSelectors.regex("/.*")).build();
+    }
+
+    private ApiInfo apiInfo() {
+        return new ApiInfoBuilder()
+                .title("礼品平台接口文档")
+                .description("礼品平台接口文档")
+                .contact(new Contact("刘成辉","","1205386897@qq.com"))
+                .version("1.0")
+                .build();
+    }
+    /*@Bean
     public Docket createRestApi() {
         Docket docket=new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
@@ -36,6 +60,6 @@ public class SwaggerConfig {
                 .contact(new Contact("刘成辉","","1205386897@qq.com"))
                 .version("1.0")
                 .build();
-    }
+    }*/
 
 }

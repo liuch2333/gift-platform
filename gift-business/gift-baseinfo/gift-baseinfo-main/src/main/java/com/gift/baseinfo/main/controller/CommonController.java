@@ -33,7 +33,7 @@ public class CommonController {
      * @param files
      * @return com.hd.tool.api.R 只返回本次上传结果
      */
-    @ApiOperation(value = "只上传文件，不关联条目")
+    @ApiOperation(value = "上传文件")
     @PostMapping(value = "uploadFile")
     public R uploadNoDatum(@ApiParam("图片信息") @RequestPart(value = "files") MultipartFile[] files) {
         return commonService.upload(files);

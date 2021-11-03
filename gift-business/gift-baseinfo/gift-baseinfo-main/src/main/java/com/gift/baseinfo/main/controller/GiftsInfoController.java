@@ -39,10 +39,10 @@ public class GiftsInfoController {
     /**
      * 礼品信息详情查询
      */
-    @GetMapping("/detail" )
+    @GetMapping("/detail/{id}" )
     @ApiOperation(value = "礼品信息详情查询", notes = "传入 giftsInfo" )
-    public R<GiftsInfo> detail(GiftsInfo giftsInfo) {
-        GiftsInfo detail = giftsInfoService.getOne(Wrappers.query(giftsInfo));
+    public R<GiftsInfo> detail(@ApiParam(value = "主键", required = true) @PathVariable("id") String id) {
+        GiftsInfo detail = giftsInfoService.getById(id);
         return R.data(detail);
     }
 
@@ -83,9 +83,9 @@ public class GiftsInfoController {
     /**
      * 礼品信息删除
      */
-    @PostMapping("/remove" )
-    @ApiOperation(value = "礼品信息删除", notes = "传入ids" )
-    public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
-        return R.status(giftsInfoService.removeByIds(Convert.toList(Integer.class, ids)));
+    @PostMapping("/remove/{id}" )
+    @ApiOperation(value = "礼品信息删除", notes = "传入id" )
+    public R remove(@ApiParam(value = "主键", required = true) @PathVariable("id") String id) {
+        return R.status(giftsInfoService.removeById(id));
     }
 }

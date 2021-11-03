@@ -46,6 +46,19 @@ public class SysUserController {
         return R.data(detail);
     }
 
+    /**
+     * 系统用户登录名是否存在
+     */
+    @GetMapping("/exists/{userNo}" )
+    @ApiOperation(value = "系统用户详情查询", notes = "传入 sysUser" )
+    public R<SysUser> exists(@PathVariable("userNo")String userNo) {
+        return sysUserService.exists(userNo);
+    }
+
+    @PostMapping("/login")
+    public R<SysUser> login(@RequestBody SysUser sysUser){
+        return sysUserService.login(sysUser);
+    }
 
     @GetMapping("/page" )
     @ApiOperation(value = "系统用户分页查询", notes = "传入 sysUser" )
@@ -67,7 +80,7 @@ public class SysUserController {
     @PostMapping("/save" )
     @ApiOperation(value = "系统用户新增", notes = "传入 sysUser" )
     public R save(@Valid @RequestBody SysUser sysUser) {
-        return R.status(sysUserService.save(sysUser));
+        return sysUserService.newSysUser(sysUser);
     }
 
     /**
@@ -83,9 +96,9 @@ public class SysUserController {
     /**
      * 系统用户删除
      */
-    @PostMapping("/remove" )
-    @ApiOperation(value = "系统用户删除", notes = "传入ids" )
-    public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
-        return R.status(sysUserService.removeByIds(Convert.toList(Integer.class, ids)));
+    @PostMapping("/remove/{id}" )
+    @ApiOperation(value = "系统用户删除", notes = "传入id" )
+    public R remove(@ApiParam(value = "主键", required = true) @PathVariable("id") String id) {
+        return R.status(sysUserService.removeById(id));
     }
 }

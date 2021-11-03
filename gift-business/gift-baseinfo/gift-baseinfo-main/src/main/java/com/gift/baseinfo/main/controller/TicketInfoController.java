@@ -67,7 +67,16 @@ public class TicketInfoController {
     @PostMapping("/save" )
     @ApiOperation(value = "礼券信息新增", notes = "传入 ticketInfo" )
     public R save(@Valid @RequestBody TicketInfo ticketInfo) {
-        return R.status(ticketInfoService.save(ticketInfo));
+        return ticketInfoService.newTicketInfo(ticketInfo);
+    }
+
+    /**
+     * 礼券验证-兑换礼品
+     */
+    @PostMapping("/checkTicketInfo" )
+    @ApiOperation(value = "礼券信息新增", notes = "传入 ticketInfo" )
+    public R checkTicketInfo(@RequestBody TicketInfo ticketInfo) {
+        return ticketInfoService.checkTicketInfo(ticketInfo);
     }
 
     /**
@@ -83,9 +92,11 @@ public class TicketInfoController {
     /**
      * 礼券信息删除
      */
-    @PostMapping("/remove" )
+    @PostMapping("/remove/{id}" )
     @ApiOperation(value = "礼券信息删除", notes = "传入ids" )
-    public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
-        return R.status(ticketInfoService.removeByIds(Convert.toList(Integer.class, ids)));
+    public R remove(@ApiParam(value = "主键", required = true) @PathVariable("id") String id) {
+        return R.status(ticketInfoService.removeById(id));
     }
+
+
 }

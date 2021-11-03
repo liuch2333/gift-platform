@@ -67,7 +67,7 @@ public class ExchangeRecordController {
     @PostMapping("/save" )
     @ApiOperation(value = "兑换记录新增", notes = "传入 exchangeRecord" )
     public R save(@Valid @RequestBody ExchangeRecord exchangeRecord) {
-        return R.status(exchangeRecordService.save(exchangeRecord));
+        return exchangeRecordService.exchangeGift(exchangeRecord);
     }
 
     /**
