@@ -37,7 +37,7 @@ public class GiftsInfo implements Serializable {
     private String giftNo;
 
     @ApiModelProperty(value = "库存")
-    private String giftCount;
+    private Integer giftCount;
 
     @ApiModelProperty(value = "礼品名称-中文名")
     private String nameChs;

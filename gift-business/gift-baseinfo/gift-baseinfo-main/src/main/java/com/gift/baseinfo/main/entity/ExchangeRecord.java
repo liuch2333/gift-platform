@@ -1,6 +1,8 @@
 package com.gift.baseinfo.main.entity;
 
 import java.math.BigDecimal;
+
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import java.time.LocalDateTime;
@@ -49,14 +51,22 @@ public class ExchangeRecord implements Serializable {
     @DecimalMin(value = "1",message = "礼品价值最低不能低于1元")
     private BigDecimal giftValue;
 
+    @ApiModelProperty(value = "礼品名称-中文名")
+    private String nameChs;
+
+    @ApiModelProperty(value = "礼品详情")
+    private String giftDetail;
+
     @ApiModelProperty(value = "兑换人")
-    @NotBlank()
+    @NotBlank(message = "兑换人不能为空")
     private String username;
 
     @ApiModelProperty(value = "兑换人电话")
+    @NotBlank(message = "兑换人电话不能为空")
     private String tel;
 
     @ApiModelProperty(value = "送货地址")
+    @NotBlank(message = "详细地址不能为空")
     private String address;
 
     @ApiModelProperty(value = "备注")
@@ -65,5 +75,7 @@ public class ExchangeRecord implements Serializable {
     @ApiModelProperty(value = "兑换时间")
     private LocalDateTime createtime;
 
+    @ApiModelProperty(value = "预览图")
+    private String preImg;
 
 }
