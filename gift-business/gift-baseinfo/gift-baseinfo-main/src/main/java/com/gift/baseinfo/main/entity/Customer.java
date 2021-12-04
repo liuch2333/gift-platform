@@ -1,15 +1,14 @@
 package com.gift.baseinfo.main.entity;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
-import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -17,13 +16,11 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author liuch
- * @since 2021-10-10
+ * @since 2021-11-21
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)
-@TableName("customer")
-@ApiModel(value="Customer对象", description="客户信息")
+@ApiModel(value = "Customer对象", description = "客户信息")
 public class Customer implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,6 +41,9 @@ public class Customer implements Serializable {
     @ApiModelProperty(value = "客户年龄")
     private Integer custAge;
 
+    @ApiModelProperty(value = "邮寄地址")
+    private String custAddr;
+
     @ApiModelProperty(value = "信息来源")
     private String custSource;
 
@@ -52,6 +52,9 @@ public class Customer implements Serializable {
 
     @ApiModelProperty(value = "登记时间")
     private LocalDateTime createtime;
+
+    @ApiModelProperty(value = "0 未开卡 1已开卡")
+    private Integer state;
 
 
 }

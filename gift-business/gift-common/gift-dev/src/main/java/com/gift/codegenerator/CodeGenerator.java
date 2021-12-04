@@ -28,9 +28,9 @@ public class CodeGenerator {
         // 基础目录
         String packageName = "com.gift.baseinfo.main";
         // 模块名  修改
-        String moduleName = "customer";
+        String moduleName = "gift-baseinfo";
         // 表名  修改
-        String[] tableNames = {"customer","exchange_record","gifts_info","sys_user","ticket_info"};
+        String[] tableNames = {"customer"};
         // 作者  修改
         String author = "liuch";
 

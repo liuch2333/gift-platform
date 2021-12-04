@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gift.baseinfo.main.mapper.TicketInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.gift.baseinfo.main.entity.TicketInfo">
+        <id column="id" property="id" />
+        <result column="cust_id" property="custId" />
+        <result column="ticket_no" property="ticketNo" />
+        <result column="ticket_pwd" property="ticketPwd" />
+        <result column="ticket_value" property="ticketValue" />
+        <result column="ticket_surplus" property="ticketSurplus" />
+        <result column="createtime" property="createtime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, cust_id, ticket_no, ticket_pwd, ticket_value, ticket_surplus, createtime
+    </sql>
+
+</mapper>

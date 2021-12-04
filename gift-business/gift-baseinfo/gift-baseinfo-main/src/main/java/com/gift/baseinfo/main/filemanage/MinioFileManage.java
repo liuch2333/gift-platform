@@ -3,7 +3,7 @@ package com.gift.baseinfo.main.filemanage;
 import cn.hutool.core.codec.Base64;
 import cn.hutool.core.lang.UUID;
 import com.gift.baseinfo.main.conf.FileProperties;
-import com.gift.baseinfo.main.entity.FileInfoVo;
+import com.gift.baseinfo.main.entity.FilemanageVo;
 import io.minio.MinioClient;
 import io.minio.PutObjectOptions;
 import io.minio.errors.InvalidEndpointException;
@@ -40,7 +40,7 @@ public class MinioFileManage implements FileManage {
 
     @Override
     public List upload(MultipartFile[] files) {
-        List<FileInfoVo> paths = new ArrayList<>();
+        List<FilemanageVo> paths = new ArrayList<>();
         // 使用MinIO服务的URL，端口，Access key和Secret key创建一个MinioClient对象
         try {
             minioClient = getMinioClient();
@@ -52,9 +52,11 @@ public class MinioFileManage implements FileManage {
             }
             // 使用putObject上传一个文件到存储桶中。
             for (MultipartFile file : files) {
-                FileInfoVo fileInfoVo = new FileInfoVo(file);
-                String fullPath = UUID.randomUUID()+"/"+fileInfoVo.getFileName();
-                fileInfoVo.setFilePath(fullPath);
+
+                FilemanageVo fileInfoVo = new FilemanageVo();
+                fileInfoVo.setFilemanageVo(file);
+                String fullPath = UUID.randomUUID()+"/"+fileInfoVo.getFilename();
+                fileInfoVo.setFilepath(fullPath);
                 InputStream in = new ByteArrayInputStream(file.getBytes());
                 minioClient.putObject(fileProperties.getMinio_bucket(),fullPath,in,new PutObjectOptions(in.available(), -1));
                 paths.add(fileInfoVo);

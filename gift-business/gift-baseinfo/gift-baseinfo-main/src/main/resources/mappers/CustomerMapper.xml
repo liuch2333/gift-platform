@@ -9,14 +9,16 @@
         <result column="cust_tel" property="custTel" />
         <result column="cust_sex" property="custSex" />
         <result column="cust_age" property="custAge" />
+        <result column="cust_addr" property="custAddr" />
         <result column="cust_source" property="custSource" />
         <result column="remark" property="remark" />
         <result column="createtime" property="createtime" />
+        <result column="state" property="state" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, cust_name, cust_tel, cust_sex, cust_age, cust_source, remark, createtime
+        id, cust_name, cust_tel, cust_sex, cust_age, cust_addr, cust_source, remark, createtime, state
     </sql>
 
 </mapper>

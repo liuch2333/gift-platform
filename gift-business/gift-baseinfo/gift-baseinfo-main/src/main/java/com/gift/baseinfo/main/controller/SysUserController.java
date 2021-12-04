@@ -50,12 +50,13 @@ public class SysUserController {
      * 系统用户登录名是否存在
      */
     @GetMapping("/exists/{userNo}" )
-    @ApiOperation(value = "系统用户详情查询", notes = "传入 sysUser" )
+    @ApiOperation(value = "系统用户登录名是否存在", notes = "传入 sysUser" )
     public R<SysUser> exists(@PathVariable("userNo")String userNo) {
         return sysUserService.exists(userNo);
     }
 
     @PostMapping("/login")
+    @ApiOperation(value = "用户登录", notes = "传入 sysUser" )
     public R<SysUser> login(@RequestBody SysUser sysUser){
         return sysUserService.login(sysUser);
     }

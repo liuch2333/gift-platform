@@ -17,7 +17,6 @@
     </properties>
     <modules>
         <module>gift-boot</module>
-        <module>gift-config</module>
         <module>gift-tool</module>
         <module>gift-dev</module>
     </modules>

@@ -28,6 +28,16 @@ public class FileProperties {
 
     /**
      * @author liuch
+     * @description 图片预览地址
+     * @date 2021/9/13 18:08
+     * @param
+     * @param null
+     * @return
+     */
+    @Value("${file.preview}")
+    String previewUrl = "http://127.0.0.1:9012/previewFile/";
+    /**
+     * @author liuch
      * @description 文件存储路径
      * @date 2021/9/13 18:08
      * @param
@@ -81,6 +91,8 @@ public class FileProperties {
      */
     @Value("${file.minio.bucket}")
     String minio_bucket = "hd-basic";
+
+
 
 
 

@@ -14,7 +14,7 @@ public interface NacosConstant {
     /**
      * nacos prod 地址
      */
-    String NACOS_PROD_ADDR = "192.168.100.4:30848";
+    String NACOS_PROD_ADDR = "127.0.0.1:8848";
 
     /**
      * nacos test 地址

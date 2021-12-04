@@ -44,7 +44,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
             if(verResult){
                 return R.data(sysUser);
             }else {
-                return R.fail("秘密错误!");
+                return R.fail("密码错误!");
             }
         }else {
             return R.fail("用户不存在！");

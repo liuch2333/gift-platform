@@ -28,6 +28,28 @@
             <groupId>io.swagger</groupId>
             <artifactId>swagger-models</artifactId>
         </dependency>
+        <!--数据库文档生成-->
+        <dependency>
+            <groupId>cn.smallbun.screw</groupId>
+            <artifactId>screw-core</artifactId>
+            <version>1.0.4</version>
+        </dependency>
+        <!-- HikariCP -->
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>3.4.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.oracle.ojdbc</groupId>
+            <artifactId>ojdbc8</artifactId>
+            <version>19.3.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.easyproject</groupId>
+            <artifactId>orai18n</artifactId>
+            <version>12.1.0.2.0</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

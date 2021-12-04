@@ -31,10 +31,15 @@
             <groupId>io.minio</groupId>
             <artifactId>minio</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-boot-starter</artifactId>
+            <version>3.0.3</version>
+        </dependency>
     </dependencies>
 
     <build>
-        <finalName>gzwaterService</finalName>
+        <finalName>giftService</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

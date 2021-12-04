@@ -55,19 +55,21 @@ public class ExchangeRecordServiceImpl extends ServiceImpl<ExchangeRecordMapper,
             if(null == giftsInfo){
                 return R.fail("礼品不存在");
             }else if(ticketInfo.getTicketSurplus().compareTo(giftsInfo.getGiftValue()) == 1){
-                //验证库存是否充足
-                if (giftsInfo.getGiftCount().compareTo(0) == 0){
+                //验证库存是否充足 去除库存
+                /*if (giftsInfo.getGiftCount().compareTo(0) == 0){
                     return R.fail("礼品库存不足！");
-                }
+                }*/
                 //验证礼品卡余额是否充足
                 //写入兑换记录，并扣除余额
                 record.setCreatetime(LocalDateTime.now());
                 if(this.save(record)){
-                    ticketInfo.setTicketSurplus(ticketInfo.getTicketSurplus().subtract(giftsInfo.getGiftValue()));
+                    //设置礼品卡状态为已兑换
+                    ticketInfo.setState(1);
                     ticketInfoMapper.updateById(ticketInfo);
+                    /*
                     //库存减1
                     giftsInfo.setGiftCount(giftsInfo.getGiftCount()-1);
-                    giftsInfoMapper.updateById(giftsInfo);
+                    giftsInfoMapper.updateById(giftsInfo);*/
                     return R.ok();
                 }else {
                     return R.fail("兑换失败，请联系客服人员处理！");

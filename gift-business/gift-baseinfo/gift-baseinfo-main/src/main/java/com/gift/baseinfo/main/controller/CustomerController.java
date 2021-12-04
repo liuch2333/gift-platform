@@ -1,5 +1,6 @@
 package com.gift.baseinfo.main.controller;
 
+import com.gift.baseinfo.main.entity.GiftsInfo;
 import com.gift.baseinfo.main.service.ICustomerService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -43,11 +44,10 @@ public class CustomerController {
     }
 
 
-    @GetMapping("/page" )
+    @PostMapping("/page" )
     @ApiOperation(value = "客户信息分页查询", notes = "传入 customer" )
-    public R page(Page<Customer> page, @RequestParam Map<String, Object> params) {
-        QueryWrapper<Customer> wrapper = Condition.getQueryWrapper(params, Customer.class);
-        return R.data(customerService.page(page, wrapper));
+    public R page(@RequestBody Customer customer, @RequestParam("pagesize") @ApiParam(value = "分页条数") int pagesize, @RequestParam("pagenow") @ApiParam(value = "当前页数")  int pagenow) {
+        return customerService.page(customer,pagesize, pagenow);
     }
 
     @GetMapping("/list" )
@@ -63,7 +63,8 @@ public class CustomerController {
     @PostMapping("/save" )
     @ApiOperation(value = "客户信息新增", notes = "传入 customer" )
     public R save(@Valid @RequestBody Customer customer) {
-        return R.status(customerService.save(customer));
+        customerService.save(customer);
+        return R.data(customer);
     }
 
     /**
@@ -72,16 +73,17 @@ public class CustomerController {
     @PostMapping("/update" )
     @ApiOperation(value = "客户信息修改", notes = "传入 customer" )
     public R update(@Valid @RequestBody Customer customer) {
-        return R.status(customerService.updateById(customer));
+        customerService.updateById(customer);
+        return R.data(customer);
     }
 
 
     /**
      * 客户信息删除
      */
-    @PostMapping("/remove" )
-    @ApiOperation(value = "客户信息删除", notes = "传入ids" )
-    public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
-        return R.status(customerService.removeByIds(Convert.toList(Integer.class, ids)));
+    @PostMapping("/remove/id" )
+    @ApiOperation(value = "客户信息删除", notes = "传入id" )
+    public R remove(@ApiParam(value = "主键集合", required = true) @PathVariable("id") String id) {
+        return R.status(customerService.removeById(id));
     }
 }

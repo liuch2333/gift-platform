@@ -1,4 +1,0 @@
-2021-07-26 19:55:50,182 INFO {POS} {IP-DISABLED} valid: 192.168.137.1:9001@DEFAULT@hdwater-gateway, region: unknown, msg: client last beat: 1627300530213
-
-2021-07-26 20:14:20,973 ERROR [UPDATE-DOMAIN] Exception while taking item from LinkedBlockingDeque.
-

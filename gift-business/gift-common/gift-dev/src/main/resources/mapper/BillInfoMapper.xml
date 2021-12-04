@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gift.baseinfo.main.mapper.BillInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.gift.baseinfo.main.entity.BillInfo">
+        <id column="id" property="id" />
+        <result column="cust_id" property="custId" />
+        <result column="company_name" property="companyName" />
+        <result column="bill_code" property="billCode" />
+        <result column="bill_banka" property="billBanka" />
+        <result column="comp_address" property="compAddress" />
+        <result column="comp_tel" property="compTel" />
+        <result column="apply_time" property="applyTime" />
+        <result column="state" property="state" />
+        <result column="elec_bill_url" property="elecBillUrl" />
+        <result column="bill_email" property="billEmail" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, cust_id, company_name, bill_code, bill_banka, comp_address, comp_tel, apply_time, state, elec_bill_url, bill_email
+    </sql>
+
+</mapper>

@@ -47,11 +47,10 @@ public class GiftsInfoController {
     }
 
 
-    @GetMapping("/page" )
+    @PostMapping("/page" )
     @ApiOperation(value = "礼品信息分页查询", notes = "传入 giftsInfo" )
-    public R page(Page<GiftsInfo> page, @RequestParam Map<String, Object> params) {
-        QueryWrapper<GiftsInfo> wrapper = Condition.getQueryWrapper(params, GiftsInfo.class);
-        return R.data(giftsInfoService.page(page, wrapper));
+    public R page( @RequestBody GiftsInfo giftsInfo, @RequestParam("pagesize") @ApiParam(value = "分页条数") int pagesize, @RequestParam("pagenow") @ApiParam(value = "当前页数")  int pagenow) {
+        return giftsInfoService.page(giftsInfo, pagesize,pagenow);
     }
 
     @GetMapping("/list" )
@@ -67,7 +66,8 @@ public class GiftsInfoController {
     @PostMapping("/save" )
     @ApiOperation(value = "礼品信息新增", notes = "传入 giftsInfo" )
     public R save(@Valid @RequestBody GiftsInfo giftsInfo) {
-        return R.status(giftsInfoService.save(giftsInfo));
+        giftsInfoService.save(giftsInfo);
+        return R.data(giftsInfo);
     }
 
     /**
@@ -76,7 +76,8 @@ public class GiftsInfoController {
     @PostMapping("/update" )
     @ApiOperation(value = "礼品信息修改", notes = "传入 giftsInfo" )
     public R update(@Valid @RequestBody GiftsInfo giftsInfo) {
-        return R.status(giftsInfoService.updateById(giftsInfo));
+        giftsInfoService.updateById(giftsInfo);
+        return R.data(giftsInfo);
     }
 
 

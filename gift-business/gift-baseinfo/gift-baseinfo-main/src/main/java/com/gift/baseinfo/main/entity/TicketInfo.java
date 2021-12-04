@@ -57,4 +57,6 @@ public class TicketInfo implements Serializable {
     private LocalDateTime createtime;
 
 
+    @ApiModelProperty(value = "礼品卡状态 0 有效 1 已兑换")
+    private Integer state;
 }

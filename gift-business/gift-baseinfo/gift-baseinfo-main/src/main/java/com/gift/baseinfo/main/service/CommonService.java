@@ -3,6 +3,8 @@ package com.gift.baseinfo.main.service;
 import com.gift.tools.apis.R;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * @author liuch
  * @title: CommonService
@@ -20,4 +22,13 @@ public interface CommonService {
      * @return com.hd.tool.api.R 只返回本次上传结果
      */
     R upload(MultipartFile[] files);
+
+    /**
+     * @Author liuch
+     * @Description 预览附件
+     * @Date 2021/8/31 18:45
+     * @param id
+     * @return com.hd.tool.api.R
+     */
+    void previewFile(String id, HttpServletResponse response);
 }

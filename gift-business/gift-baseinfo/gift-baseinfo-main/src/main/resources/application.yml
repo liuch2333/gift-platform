@@ -1,6 +1,6 @@
 server:
   profile:
-    active: dev
+    active: prod
   port: 9010
 spring:
   cloud:
